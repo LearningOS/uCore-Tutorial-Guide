@@ -33,12 +33,12 @@
 实践体验
 ---------------------------
 
-本章我们引入了用户程序，为了解耦内核与用户程序，我们分离了两个仓库，分别是存放内核程序的 ``uCore-Tutorial-Code-20xxx`` （下称代码仓库，最后几位 x 表示学期）与存放用户程序的 ``uCore-Tutorial-Test-20xxx`` （下称测例仓库）。 因此首先你需要进入代码仓库文件夹（如果已经执行过该步骤则不需要再重复执行）并 clone 用户程序仓库：
+本章我们引入了用户程序，为了解耦内核与用户程序，我们分离了两个仓库，分别是存放内核程序的 ``uCore-Tutorial-Code`` （下称代码仓库）与存放用户程序的 ``uCore-Tutorial-Test`` （下称测例仓库）。 因此首先你需要进入代码仓库文件夹（如果已经执行过该步骤则不需要再重复执行）并 clone 用户程序仓库：
 
 .. code-block:: console
 
-   $ cd uCore-Tutorial-Code-2025S
-   $ git clone https://github.com/LearningOS/uCore-Tutorial-Test-2025S.git user
+   $ cd uCore-Tutorial-Code
+   $ git clone https://github.com/LearningOS/uCore-Tutorial-Test.git user
 
 上面的指令会将测例仓库克隆到代码仓库下并命名为 ``user`` ，注意 ``/user`` 在代码仓库的 ``.gitignore`` 中，因此不会出现 ``.git`` 文件夹嵌套的问题，并且你 ``checkout`` 代码仓库时也不会影响测例仓库的内容。
 

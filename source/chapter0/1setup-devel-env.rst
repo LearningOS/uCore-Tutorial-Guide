@@ -5,14 +5,14 @@
    :hidden:
    :maxdepth: 4
    
-本节我们将完成环境配置并成功运行 uCore-Tutorial-2025S 。整个流程分为下面几个部分：
+本节我们将完成环境配置并成功运行 uCore-Tutorial 。整个流程分为下面几个部分：
 
 .. - classroom配置
 - 系统环境配置
 - Riscv下 C 开发环境配置
 - Qemu 模拟器安装
 - 其他工具安装
-- 运行 uCore-Tutorial-2025S
+- 运行 uCore-Tutorial
 
 目前实验仅支持 Ubuntu18.04 + 操作系统。对于 Windows10 和 macOS 上的用户，可以使用 VMware 或 VirtualBox 安装一台 Ubuntu18.04 虚拟机并在上面进行实验。
 
@@ -155,7 +155,7 @@ Docker 环境安装(可选，已完成上述步骤的可以忽略)
 Qemu 模拟器安装
 ----------------------------------------
 
-我们推荐使用 Qemu 7.0.0 版本及以上进行实验，而很多 Linux 发行版的软件包管理器默认软件源中的 Qemu 版本过低，可能无法顺利实验
+我们推荐使用 Qemu 7.0.0 版本及以上进行实验，而很多 Linux 发行版的软件包管理器默认软件源中的 Qemu 版本过低或者过高，可能无法顺利实验
 因此我们需要从源码手动编译安装 Qemu 模拟器。
 
 首先我们安装依赖包，获取 Qemu 源代码并手动编译：
@@ -240,10 +240,6 @@ GDB 调试支持
    b *0x80200000
    c 
 
-.. warning::
-
-   目前 2025S 下发的 uCore 代码仓库中，你的 Makefile 可能不是最新的。如果运行以上指令出现问题，请将 `此处第114-124行代码 <https://git.tsinghua.edu.cn/os-lab/2025s/public/ucore-tutorial-code-2025s/-/blob/ch3/Makefile?ref_type=heads#L114-124>`_ 复制到你的 Makefile 中，替换原先的 ``debug:`` 任务。
-
 VSCode 可视化调试支持
 ------------------------------
 
@@ -266,15 +262,15 @@ VSCode 可视化调试支持
 
 之后则可以设置断点进行GDB调试。
 
-在 Qemu 平台上运行 uCore-Tutorial-2025S
+在 Qemu 平台上运行 uCore-Tutorial
 ------------------------------------------------------------
 
 到这里，恭喜你完成了实验环境的配置，可以开始阅读教程的正文部分了！可以直接clone下面的仓库来开始OS之旅：
 
 .. code-block:: bash
 
-   git clone https://github.com/LearningOS/uCore-Tutorial-Code-2025S.git
-   cd uCore-Tutorial-Code-2025S
+   git clone https://github.com/LearningOS/uCore-Tutorial-Code.git
+   cd uCore-Tutorial-Code
 
 其他的章节需要处理用户代码，我们可以先运行不需要处理用户代码的 ch1 分支：
 

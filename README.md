@@ -1,4 +1,4 @@
-# uCore-Tutorial-Guide-2025S
-Documentation of uCore-Tutorial-Guide-2025S
+# uCore-Tutorial-Guide
+Lab manual for the uCore labs of Tsinghua University's Operating System course.
 
-Deployed version can be found [here](https://LearningOS.github.io/uCore-Tutorial-Guide-2025S/).
+Deployed version can be found [here](https://LearningOS.github.io/uCore-Tutorial-Guide/).

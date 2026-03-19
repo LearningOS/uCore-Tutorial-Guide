@@ -386,6 +386,10 @@
 </pre></div>
 </div>
 <p>我们的 log 等级选择是通过 -D 参数来实现的，这也是大家 <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">run</span> <span class="pre">LOG=xxx</span></code> 的原理。从这里我们也可以看到 <code class="docutils literal notranslate"><span class="pre">LOG</span></code> 的可选值。</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>大家在实际使用中会发现，由于 LOG 是静态编译是就确认的参数，所以如果想要改变 LOG 等级，就需要重新编译几乎所有的源文件。目前在需要改变 LOG 等级的时候需要 make clean 然后重新 make run。</p>
+</div>
 </div>
 </div>
 </div>

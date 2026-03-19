@@ -14,7 +14,7 @@ makefile 和 qemu
 
 .. warning:: 
 
-   注意，makefile 在整个实验过程中不可修改，否则可能导致 CI 无法通过！
+   整个实验过程中无需修改 makefile 。如果在提交实验代码前修改过 makefile ，请记得复原，否则可能导致 CI 测试不通过。
 
 
 makefile 内部
@@ -122,7 +122,6 @@ LOG 支持
 
 我们的 log 等级选择是通过 -D 参数来实现的，这也是大家 ``make run LOG=xxx`` 的原理。从这里我们也可以看到 ``LOG`` 的可选值。
 
-.. warngin::
+.. warning::
 
-   FIX ME:
    大家在实际使用中会发现，由于 LOG 是静态编译是就确认的参数，所以如果想要改变 LOG 等级，就需要重新编译几乎所有的源文件。目前在需要改变 LOG 等级的时候需要 make clean 然后重新 make run。

@@ -14,7 +14,7 @@ makefile 和 qemu
 
 .. warning:: 
 
-   注意，makefile 在整个实验过程中不可修改，否则可能导致 CI 无法通过！
+   整个实验过程中无需修改 makefile 。如果在提交实验代码前修改过 makefile ，请记得复原，否则可能导致 CI 测试不通过。
 
 
 makefile 内部

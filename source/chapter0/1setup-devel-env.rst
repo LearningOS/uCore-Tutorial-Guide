@@ -272,70 +272,6 @@ VSCode 可视化调试支持
    git clone https://github.com/LearningOS/uCore-Tutorial-Code.git
    cd uCore-Tutorial-Code
 
-测例选择与编译选项（全书通用）
-------------------------------------------------------------
-
-在开始正文前，先给出全书通用的测例选择规则，方便后续各章快速定位“该跑哪些测例”。
-
-.. note::
-
-   ``user`` 测例仓库会在第二章正式引入并使用；第一章通常不涉及 ``user`` 仓库。
-   本节先提前说明规则，便于你在进入第二章后直接上手。
-
-在 ``uCore-Tutorial-Code`` 根目录下，``make test`` 的行为如下：
-
-.. code-block:: console
-
-   $ make test [BASE=0|1] [CHAPTER=2|3|...|8]
-
-- ``make test`` 等价于先 ``make user`` 再 ``make run`` 。
-- ``BASE`` 用于控制测例集合规模：
-  - ``BASE=1``：基础/冒烟测例集合；
-  - ``BASE=0``（默认）：本章完整测例集合。
-- ``CHAPTER`` 用于指定章节测例集合；不手动指定时，会根据当前 git 分支名（如 ``ch3``）自动推断。
-
-常用命令示例：
-
-.. code-block:: console
-
-   # 快速自检：仅基础测例
-   $ make test BASE=1
-
-   # 章节完整回归：BASE 默认为 0
-   $ make test
-
-   # 当分支名无法自动推断 CHAPTER 时，手动指定
-   $ make user CHAPTER=3 BASE=1
-   $ make run
-
-各章节（CH2~CH8）对应的测例前缀集合如下（与 ``user/Makefile`` 保持一致）：
-
-- ``CHAPTER=2``
-  - ``BASE=1`` / ``BASE=0``：``ch2b_``
-- ``CHAPTER=3``
-  - ``BASE=1``：``ch3b_ ch2b_``
-  - ``BASE=0``：``ch3b_ ch2b_ ch3_``
-- ``CHAPTER=4``
-  - ``BASE=1``：``ch2b_ ch3b_yield``
-  - ``BASE=0``：``ch2b_ ch3b_yield ch4_ ch3b_sleep ch3_``
-- ``CHAPTER=5``
-  - ``BASE=1``：``ch5b_ ch3b_ ch2b_ usershell``
-  - ``BASE=0``：``ch5b_ ch2b_ ch3b_yield ch4_ ch3b_sleep ch3_ ch5_ ch5t_ usershell``
-- ``CHAPTER=6``
-  - ``BASE=1``：``ch6b_ ch5b_ ch3b_ ch2b_ usershell``
-  - ``BASE=0``：``BASE=1`` 集合 + ``ch6_ ch5_ ch4_``
-- ``CHAPTER=7``
-  - ``BASE=1``：``ch7b_`` + ``CH6_BASE_TESTS``
-  - ``BASE=0``：``BASE=1`` 集合 + ``ch7_``
-- ``CHAPTER=8``
-  - ``BASE=1``：``ch8b_`` + ``CH7_BASE_TESTS``
-  - ``BASE=0``：``BASE=1`` 集合 + ``ch8_``
-
-补充说明：
-
-- 从 ``ch5`` 开始，部分测试通过 ``usershell`` 触发，进入 shell 后按提示执行测例属于正常现象。
-- ``BASE=1`` 适合快速检查框架基本功能；实验验收前建议至少运行一次默认的 ``make test``。
-
 其他的章节需要处理用户代码，我们可以先运行不需要处理用户代码的 ch1 分支：
 
 .. code-block:: bash
@@ -382,3 +318,66 @@ VSCode 可视化调试支持
    如果是正常推出，uCore 会自动关闭 qemu，但如果 os 跑飞了，我们不能通过 ``Ctrl + C`` 来推出。此时可以先按下 ``Ctrl+A`` ，再按下 ``X`` 来退出 Qemu。
 
 
+如何运行测试
+------------------------------------------------------------
+
+在开始正文前，先给出全书通用的测例选择规则，方便后续各章快速定位“该跑哪些测例”。
+
+.. note::
+
+   ``user`` 测例仓库会在第二章正式引入并使用；第一章通常不涉及 ``user`` 仓库。
+   本节先提前说明规则，便于你在进入第二章后直接上手。
+
+在 ``uCore-Tutorial-Code`` 根目录下，``make test`` 的行为如下：
+
+.. code-block:: console
+
+   $ make test [BASE=0|1] [CHAPTER=2|3|...|8]
+
+- ``make test`` 等价于先 ``make user`` 再 ``make run`` 。
+- ``BASE`` 用于控制测例类型：
+  - ``BASE=1``：仅包含基础测例；
+  - ``BASE=0``（默认）：包含本章完整测例。
+- ``CHAPTER`` 用于指定章节测例集合；不手动指定时，会根据当前 git 分支名（如 ``ch3``）自动推断。
+
+常用命令示例：
+
+.. code-block:: console
+
+   # 快速自检：仅基础测例
+   $ make test BASE=1
+
+   # 章节完整回归：BASE 默认为 0
+   $ make test
+
+   # 当分支名无法自动推断 CHAPTER 时，手动指定
+   $ make user CHAPTER=3 BASE=1
+   $ make run
+
+各章节（CH2~CH8）对应的测例前缀集合如下（与 ``user/Makefile`` 保持一致）：
+
+- ``CHAPTER=2``
+  - ``BASE=1`` / ``BASE=0``：``ch2b_``
+- ``CHAPTER=3``
+  - ``BASE=1``：``ch3b_ ch2b_``
+  - ``BASE=0``：``ch3b_ ch2b_ ch3_``
+- ``CHAPTER=4``
+  - ``BASE=1``：``ch2b_ ch3b_yield``
+  - ``BASE=0``：``ch2b_ ch3b_yield ch4_ ch3b_sleep ch3_``
+- ``CHAPTER=5``
+  - ``BASE=1``：``ch5b_ ch3b_ ch2b_ usershell``
+  - ``BASE=0``：``ch5b_ ch2b_ ch3b_yield ch4_ ch3b_sleep ch3_ ch5_ ch5t_ usershell``
+- ``CHAPTER=6``
+  - ``BASE=1``：``ch6b_ ch5b_ ch3b_ ch2b_ usershell``
+  - ``BASE=0``：``BASE=1`` 集合 + ``ch6_ ch5_ ch4_``
+- ``CHAPTER=7``
+  - ``BASE=1``：``ch7b_`` + ``CH6_BASE_TESTS``
+  - ``BASE=0``：``BASE=1`` 集合 + ``ch7_``
+- ``CHAPTER=8``
+  - ``BASE=1``：``ch8b_`` + ``CH7_BASE_TESTS``
+  - ``BASE=0``：``BASE=1`` 集合 + ``ch8_``
+
+补充说明：
+
+- 从 ``ch5`` 开始，部分测试通过 ``usershell`` 触发，进入 shell 后按提示执行测例属于正常现象。
+- ``BASE=1`` 适合快速检查框架基本功能；实验验收前建议至少运行一次默认的 ``make test``。

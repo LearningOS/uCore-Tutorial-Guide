@@ -362,7 +362,14 @@
 <div class="section" id="id4">
 <h2>问答作业<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <ol class="arabic">
-<li><p>正确进入 U 态后，程序的特征还应有：使用 S 态特权指令，访问 S 态寄存器后会报错。请同学们可以自行测试这些内容（参考 <a class="reference external" href="https://github.com/LearningOS/uCore-Tutorial-Test/tree/main/src">前三个测例</a> ，描述程序出错行为，同时注意注明你使用的 sbi 及其版本。</p></li>
+<li><p>正确进入 U 态后，程序的特征还应有：使用 S 态特权指令，访问 S 态寄存器后会报错。请同学们可以自行测试这些内容（参考 <a class="reference external" href="https://github.com/LearningOS/uCore-Tutorial-Test/tree/main/src">前三个测例</a> ，描述程序出错行为，同时注意注明你使用的 sbi 及其版本。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>部分资料中这三个程序以 <code class="docutils literal notranslate"><span class="pre">__ch2_</span></code> 为前缀，默认无法被测试触发。
+若你希望在本地通过 <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code> 运行这三个测试，请修改这三个测例的  <code class="docutils literal notranslate"><span class="pre">__ch2_</span></code> 前缀改为 <code class="docutils literal notranslate"><span class="pre">ch2b_</span></code> ，然后 <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code> 再进行测试即可。
+详细测试方式请参考 ch0 中测例选择与编译选项部分章节。</p>
+</div>
+</li>
 <li><p>请结合用例理解 <a class="reference external" href="https://github.com/LearningOS/uCore-Tutorial-Code/blob/ch3/os/trampoline.S">trampoline.S</a> 中两个函数 <cite>userret</cite> 和 <cite>uservec</cite> 的作用，并回答如下几个问题:</p>
 <ol class="arabic">
 <li><p>L79: 刚进入 <cite>userret</cite> 时，<cite>a0</cite>、<cite>a1</cite> 分别代表了什么值。</p></li>
